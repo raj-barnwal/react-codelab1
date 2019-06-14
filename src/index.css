@@ -1,3 +1,8 @@
+:root {
+  --white: #fff;
+  --black: #000;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -17,4 +22,10 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.clearfix {
+  content: '';
+  clear: both;
+  display: table;
 }

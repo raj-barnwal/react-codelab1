@@ -3,9 +3,9 @@ import React from 'react';
 const Footer = () => (
     <div className="footer">
         &copy; 2019-2020
-        <div>
+        <span className="name">
             JS Lovers
-        </div>
+        </span>
     </div>
 );
 

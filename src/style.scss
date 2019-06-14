@@ -1,0 +1,370 @@
+// These variables, we can use as SCSS interpolation anywhere in same file
+$m: "margin";
+$p: "padding";
+$t: "top";
+$r: "right";
+$b: "bottom";
+$l: "left";
+$step: 5;  // it provides interval gap
+
+// Global margin adjustment classes for 0-30. interval of 5px
+@for $i from 0 through 50 / $step {
+  .m#{$i*$step} {
+    #{$m}: #{$i*$step}px;
+  }
+
+  .mt#{$i*$step} {
+    #{$m}-#{$t}: #{$i*$step}px;
+  }
+
+  .mr#{$i*$step} {
+    #{$m}-#{$r}: #{$i*$step}px;
+  }
+
+  .mb#{$i*$step} {
+    #{$m}-#{$b}: #{$i*$step}px;
+  }
+
+  .ml#{$i*$step} {
+    #{$m}-#{$l}: #{$i*$step}px;
+  }
+
+  .mtb#{$i*$step} {
+    #{$m}-#{$t}: #{$i*$step}px;
+    #{$m}-#{$b}: #{$i*$step}px;
+  }
+
+  .mrl#{$i*$step} {
+    #{$m}-#{$r}: #{$i*$step}px;
+    #{$m}-#{$l}: #{$i*$step}px;
+  }
+}
+// END Global margin adjustment classes for 0-30.
+
+// Global padding adjustment classes for 0-30.
+@for $i from 0 through 50 / $step {
+  .p#{$i*$step} {
+    #{$p}: #{$i*$step}px;
+  }
+  .pt#{$i*$step} {
+    #{$p}-#{$t}: #{$i*$step}px;
+  }
+
+  .pr#{$i*$step} {
+    #{$p}-#{$r}: #{$i*$step}px;
+  }
+
+  .pb#{$i*$step} {
+    #{$p}-#{$b}: #{$i*$step}px;
+  }
+
+  .pl#{$i*$step} {
+    #{$p}-#{$l}: #{$i*$step}px;
+  }
+
+  .ptb#{$i*$step} {
+    #{$p}-#{$t}: #{$i*$step}px;
+    #{$p}-#{$b}: #{$i*$step}px;
+  }
+
+  .prl#{$i*$step} {
+    #{$p}-#{$l}: #{$i*$step}px;
+    #{$p}-#{$r}: #{$i*$step}px;
+  }
+}
+
+// END Global margin adjustment classes for 0-30.
+
+// This mixin function would help to content in center
+@mixin center($position) {
+  position: absolute;
+
+  // vertically center, when we pass value vertical in mixin
+  @if $position == 'vertical' {
+    @include transform(translateY(-50%));
+    top: 50%;
+  }
+
+    //  horizontally center, when we pass value horizontal in mixin
+  @else if $position == 'horizontal' {
+    @include transform(translateX(-50%));
+    left: 50%;
+  }
+
+    //  both center, when we pass value both in mixin, it makes both center
+  @else if $position == 'both' {
+    @include transform(translate(-50%, -50%));
+    top: 50%;
+    left: 50%;
+  }
+}
+
+a,
+i,
+strong {
+  display: inline-block;
+}
+
+ul,
+li {
+  list-style-type: none;
+}
+
+ul {
+  padding-left: 0;
+}
+
+.medium-strong {
+  font-weight: 600;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+a,
+input,
+button,
+textarea {
+  outline: none;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+a {
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.text-btn {
+  background: none;
+  border: 0;
+  color: var(--nykaa-pink);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+
+  &.disabled {
+    color: #cdcdcd;
+    font-weight: 600;
+  }
+}
+
+.float-right {
+  float: right;
+}
+
+.float-left {
+  float: left;
+}
+
+.header {
+  background-color: #000;
+  color: var(--white);
+  font-size: 20px;
+  font-weight: 600;
+  padding: 30px 50px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+
+  .user-name {
+    color: #ee57ba;
+    padding-left: 5px;
+  }
+
+  .text-info {
+    font-size: 12px;
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+  }
+}
+
+.logo {
+  cursor: pointer;
+  float: left;
+}
+
+.date-time {
+  color: var(--white);
+  font-size: 20px;
+  float: right;
+
+  .info {
+    color: #f508e0;
+    font-size: 12px;
+    padding-left: 5px;
+  }
+}
+
+.footer {
+  background-color: var(--black);
+  color: var(--white);
+  font-size: 16px;
+  padding: 20px 50px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+
+  .name {
+    padding-left: 20px;
+  }
+}
+
+.inner-header {
+  width: 100%;
+  margin-top: 100px;
+  padding: 20px 50px 0 50px;
+
+  .heading {
+    float: left;
+    margin-top: 10px;
+    margin-bottom: 0;
+  }
+
+  .add-user-btn {
+    float: right;
+  }
+}
+
+.user-card-container {
+  padding: 20px 50px;
+  margin-bottom: 50px;
+  width: 100%;
+
+  .card-col {
+    float: left;
+    margin-right: 20px;
+    position: relative;
+    width: calc(100%/3 - 13.33px);
+
+    .user-card {
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      color: var(--black);
+      margin-bottom: 20px;
+      padding: 10px 20px;
+
+      .title {
+        display: inline-block;
+        width: 150px;
+        font-weight: 600;
+      }
+
+      .user-action {
+        background-color: rgba(0, 0, 0, 0.5);
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 5px 10px;
+        text-align: right;
+
+        .fa {
+          color: #fff;
+          cursor: pointer;
+          padding: 5px;
+          margin-left: 5px;
+        }
+      }
+
+      &:hover {
+        .user-action {
+          display: block;
+        }
+      }
+    }
+
+    &:nth-child(3n) {
+      margin-right: 0;
+    }
+  }
+}
+
+/* The Modal (background) */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 90px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+
+  &.open {
+    display: block;
+  }
+
+  .modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 15px 0 30px 30px;
+    position: relative;
+    border: 1px solid #888;
+    width: 50%;
+
+    .heading {
+      float: left;
+      font-size: 20px;
+      font-weight: 600;
+      padding-bottom: 15px;
+    }
+    /* The Close Button */
+    .close {
+      color: #aaaaaa;
+      font-size: 28px;
+      font-weight: bold;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+
+      &:hover, &:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+      }
+    }
+
+    .add-user-form {
+      .content-section {
+        height: 375px;
+        overflow-y: auto;
+        padding-right: 30px;
+      }
+
+      .btn-group {
+        float: right;
+        margin-right: 50px;
+      }
+    }
+
+  }
+}
+
+.user-info-details {
+  .row {
+    margin-bottom: 15px;
+
+    .title {
+      font-weight: 600;
+    }
+  }
+}
+
+.login-btn {
+  width: 100px;
+}
